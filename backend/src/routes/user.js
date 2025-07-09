@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import express from "express";
 import {signUpBody,signInBody,changePinBody} from "../rules";
 import jwt from "jsonwebtoken";
+import rateLimiter from "../middlewares/rateLimiter"
 
 if (!process.env.JWT_SECRET) {
     throw new Error("No JWT_SECRET found in .env")
@@ -13,7 +14,7 @@ const router = express.Router()
 const JWT_SECRET = process.env.JWT_SECRET;
 app.useso
 
-router.post("/signup", async function(req,res,) {
+router.post("/signup",rateLimiter ,async function(req,res,) {
    
     try {
        const inputPayload = req.body;
@@ -59,7 +60,7 @@ router.post("/signup", async function(req,res,) {
     }
 })
 
-router.post("/signin", async function(req,res) {
+router.post("/signin", rateLimiter ,async function(req,res) {
     try {
             const inputPayload = req.body;
             const parsedPayload = signInBody.safeParse(inputPayload);
@@ -161,7 +162,7 @@ router.post("/signin", async function(req,res) {
        }
     });
 
-    router.put("/change-pin", authMiddleware, async function(req,res) {
+    router.put("/change-pin",rateLimiter ,authMiddleware, async function(req,res) {
         const inputPayload = req.body;
         const parsedPayload = changePinBody.safeParse(inputPayload);
 

@@ -10,6 +10,7 @@ A robust, production-grade backend API for a digital wallet application. Built w
 🔁 PIN-Protected Fund Transfers
 🧾 Transaction History (with sent/received separation, pagination & sorting)
 🔁 Change PIN
+   Rate-limited Auth Routes
 🚪 Secure Sign-Out
 📦 Clean Modular Codebase (middlewares, route-based architecture)
 
@@ -45,6 +46,7 @@ Hashing	bcrypt (for password and PIN)
 Validation	Zod
 Security	Cookie-based refresh tokens, PIN verification
 Utils	UUID
+Rate limiting Basic abuse protection
 
  API Endpoints (Key Highlights)
 
@@ -71,7 +73,7 @@ Validation is enforced using Zod on every incoming request body.
 Future Enhancements
 
 🧾 Razorpay / Stripe integration for real-world payments
-🛡 Rate Limiting & Brute Force Protection
+
 🧠 Role-based Access Control (RBAC)
 
 
