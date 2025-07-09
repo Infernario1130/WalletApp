@@ -219,3 +219,44 @@ router.post("/signin", rateLimiter ,async function(req,res) {
         }
 
     })
+
+
+    router.post("/refresh-token", async function(req,res) {
+        try {
+            const token  = req.cookies.refreshTokens;
+            
+            if(!token) {
+                return res.status(401).json({
+                    error: "Refresh token missing."
+                })
+            }
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            
+            const newAccessToken = jwt.sign(
+                { id: decoded.id, email: decoded.email },
+                process.env.JWT_SECRET,
+                { expiresIn: "1h" }
+              );
+
+              const newRefreshToken = jwt.sign(
+                { id: decoded.id, email: decoded.email },
+                process.env.JWT_SECRET,
+                { expiresIn: "7d" }
+              );  
+
+              res.cookie("refreshTokens",newRefreshToken, {
+                httpOnly: true,
+                secure: true,
+                sameSite: true,
+                path: "/",
+                maxAge: 7*24*60*60*1000
+              })
+              res.json({
+                accessToken: newAccessToken
+              })
+        } catch (error) {
+            return res.status(403).json({
+                error: "Invalid refresh token"
+            })
+        }
+    })

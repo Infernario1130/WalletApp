@@ -20,17 +20,19 @@ function authMiddleware(req , res, next) {
     const jwtToken = words[1];
     try 
         {const decodedValue = jwt.verify(jwtToken,secretKey)
-            if(typeof decodedValue ==="object" && decodedValue !== null && "id" in decodedValue && "email" in decodedValue) {
                 req .user = decodedValue
                 next()
-            } else {
-                res.status(401).json({
-                    error: "Unauthorized authentication"
-                })
-            }
-        }
+             }
         catch(error) {
-             res.status(401).json({ error: "Token invalid or expired." })
+            if(error.name === "TokenExpiredError") {
+                return res.status(401).json({
+                    error: "Token expired"
+                })
+            } else {
+
+                return res.status(401).json({ error: "Token invalid." })
+            }
+
         }
    
 }
