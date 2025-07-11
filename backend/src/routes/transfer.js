@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 router.post("/transfer",authMiddleware, async function(req,res) {
-    const inputPayload = req.body;              //fixed the error.
+    const inputPayload = req.body;             
     const parsedPayload = transferBody.safeParse(inputPayload);
 
     if(!parsedPayload.success) {
@@ -242,4 +242,7 @@ router.post("/top-up", authMiddleware, async function(req,res) {
     }
 });
 
+module.exports = {
+    transactionRouter : router
+}
     

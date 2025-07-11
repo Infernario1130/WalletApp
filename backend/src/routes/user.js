@@ -260,3 +260,21 @@ router.post("/signin", rateLimiter ,async function(req,res) {
             })
         }
     })
+
+    router.post("/sign-out", authMiddleware , function(req,res) {
+        res.clearCookie("refreshTokens",{
+            httpOnly: true,
+            path: "/",
+            secure: true,
+            sameSite: "none",
+            maxAge: 0
+    
+        });
+        res.json({
+            msg: "User successfully signed-out."
+        })
+    })
+
+    module.exports = {
+        userRouter: router
+    }

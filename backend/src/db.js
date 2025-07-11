@@ -47,11 +47,7 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    role: {
-        type: String,
-        enum: ["admin","user"],
-        required: [true, "Role needs to be defined."]
-    },
+    
     pinHash: {
         type: String,
         minLength: [4, "PIN should have minimum 4 characters."],
