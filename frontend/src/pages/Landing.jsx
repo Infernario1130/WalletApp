@@ -1,7 +1,10 @@
+import {AppBar} from "../components/ui/AppBar"
+
 export default function Landing() {
+    console.log("Landing rendering.")
     return(
         <>
-        <h1> This is Landing page.</h1>
+            <AppBar/>
         </>
     )
-}
+} 
