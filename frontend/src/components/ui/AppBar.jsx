@@ -1,16 +1,40 @@
-
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
 
 export function AppBar() {
-    return(
-        <div className="bg-blue-500 w-5/6 h-14 mt-4 mx-24 rounded-2xl flex justify-between">
-            <div className=" font-bold mx-8 my-4">
-                    Wally
-             </div>
-         <div className="my-4 mr-6 flex justify-around">
-            <div className="mr-8">Sign-up</div>
-             <div className="mr-8">Sign-in</div>
-             <div>Contact us</div>
-         </div>
-         </div>
-        )
-    }
+  const [open, setOpen] = useState(false)
+
+  return (
+    <header className="bg-lime-200 w-full px-4 py-3 rounded-2xl shadow-md">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+
+        {/* Logo */}
+        <div className="text-xl font-bold">Wally</div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-4">
+          <Button size="sm">Sign-up</Button>
+          <Button size="sm">Sign-in</Button>
+          <Button size="sm">Contact us</Button>
+        </nav>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button onClick={() => setOpen(!open)} aria-label="Toggle Menu">
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {open && (
+        <div className="flex flex-col items-center gap-3 mt-4 md:hidden">
+          <Button size="sm" className="w-11/12 max-w-xs">Sign-up</Button>
+          <Button size="sm" className="w-11/12 max-w-xs">Sign-in</Button>
+          <Button size="sm" className="w-11/12 max-w-xs">Contact us</Button>
+        </div>
+      )}
+    </header>
+  )
+}
