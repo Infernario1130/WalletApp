@@ -1,8 +1,11 @@
 import {useState} from "react"
 import { Button } from "./button"
 import { Menu,X } from "lucide-react"
+import { useNavigate } from "react-router-dom";
 
 export function AppBar() {
+
+  const navigate = useNavigate
 
   const [open,setOpen] = useState(false);
 
@@ -18,10 +21,12 @@ export function AppBar() {
         </div>
         
         <nav className="hidden md:flex flex-row items-center space-x-4">
-          <Button size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign Up</Button>
-          <Button size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign In</Button>
-          <Button size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Contact Us</Button>
+          <Button onClick={function(){navigate("/signup")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign Up</Button>
+          <Button onClick={function(){navigate("/signin")}} size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign In</Button>
+          <Button onClick={function(){navigate("?contact")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Contact Us</Button>
         </nav>
+
+        <button onClick={function() {}}></button>
 
         <div className="md:hidden hover:scale-110">
           <button onClick={ClickHandler}>

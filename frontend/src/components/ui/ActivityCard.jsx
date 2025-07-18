@@ -4,7 +4,7 @@ import car from "../../assets/car.png";
 export function ActivityCard() {
     
     return(
-    <div className="w-1/2 rounded-xl shadow-md shadow-gray-800  transition delay-50 duration-300 hover:scale-110 hover:bg-ehite-800 hover:shadow-violet-800">
+    <div className="w-1/2 md:w-1/4 rounded-xl shadow-md shadow-gray-800  transition delay-50 duration-300 hover:scale-110 hover:bg-ehite-800 hover:shadow-violet-800">
         <div className="flex justify-between pl-2">
             <div className="font-semibold text-md">
                 Activities

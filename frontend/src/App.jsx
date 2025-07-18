@@ -10,6 +10,7 @@ const Transfer = lazy(()=>import ("./pages/Transfer"));
 const Transactions = lazy(()=>import ("./pages/Transactions"));
 const TopUp = lazy(()=>import ("./pages/TopUp"));
 const NotFound = lazy(()=>import ("./pages/NotFound"))
+const ContactUs = lazy(()=>import ("./pages/ContactUs"))
 
 function App() {
   return(
@@ -26,6 +27,7 @@ function App() {
       <Route path="/transfer" element={<Transfer/>}/>
       <Route path="/transactions" element={<Transactions/>}/>
       <Route path="/top-up" element={<TopUp/>}/>
+      <Route path="/contact" elemeny={<ContactUs/>}/>
       <Route path="*" element={<NotFound/>}/>
     </Routes>
     </Suspense>

@@ -8,6 +8,7 @@ import { AboutUsCard } from "../components/ui/AboutUsCard"
 import {Lock} from "lucide-react";
 import {Globe} from "lucide-react";
 import Smart from "../assets/Smart.png";
+import { FaqAccordion } from "../components/ui/Faq"
 
 export default function Landing() {
     return(
@@ -15,10 +16,12 @@ export default function Landing() {
             <AppBar/>
             <SubHeading text="E-WALLET & PAYMENT GATEWAY"/>
             <Heading text="Send Money Seamlessly!"/>
-            <PhoneCard/>
+            <div>
+             <PhoneCard/>
             <div className="flex justify-around">
                 <ActivityCard/>
                 <RatingCard/>
+            </div>   
             </div>
             <div className="bg-gray-100 mt-4 rounded-lg">
                 <div className="flex flex-start mx-4">
@@ -27,6 +30,8 @@ export default function Landing() {
                 <div className="mx-4">
                     <Heading text="Building the Future of Digital Payments"/>
                 </div>
+                <div >
+
                 <div className="flex justify-center">
                     <AboutUsCard text1="Secure & reliable" text2="Bank-grade protection." Icon={Lock}/>
                 </div>
@@ -39,6 +44,15 @@ export default function Landing() {
                     <img src={Smart} alt="Phone" class="relative z-10 w-[300px] transition delay-50 duration-200 hover:scale-110 " />
                     </div>
                  </div>
+
+                </div>
+                 <div className=" -mt-4 flex justify-center">
+                    <SubHeading text="FAQs"/>
+                 </div>
+                 <div className="mx-14">
+                    <Heading text="Frequently Asked Questions"/>
+                 </div>
+                 <FaqAccordion/>
                                                             
         </>
     )

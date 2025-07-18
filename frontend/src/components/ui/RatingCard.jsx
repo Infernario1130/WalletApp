@@ -9,7 +9,7 @@ import {Plus} from "lucide-react"
 export function RatingCard() {
     console.log("rating")
     return(
-        <div className="w-1/2 -mt-8 ml-6 ">
+        <div className="w-1/2 md:1/4 -mt-8 ml-6 md:px-24">
             <div>
                  <img src={Rating} className="w-24 transition delay-50 duration-300 hover:scale-110 hover:bg-white-500"></img>
             </div>
