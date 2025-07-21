@@ -12,7 +12,7 @@ if (!process.env.JWT_SECRET) {
 
 const router = express.Router()
 const JWT_SECRET = process.env.JWT_SECRET;
-app.useso
+
 
 router.post("/signup",rateLimiter ,async function(req,res,) {
    
