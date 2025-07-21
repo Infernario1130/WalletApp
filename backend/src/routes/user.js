@@ -14,7 +14,7 @@ const router = express.Router()
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
-router.post("/signup",rateLimiter ,async function(req,res,) {
+router.post("/signup",rateLimiter() ,async function(req,res,) {
    
     try {
        const inputPayload = req.body;
@@ -60,8 +60,8 @@ router.post("/signup",rateLimiter ,async function(req,res,) {
     }
 })
 
-router.post("/signin", rateLimiter ,async function(req,res) {
-    try {
+router.post("/signin", rateLimiter() ,async function(req,res) {
+    try { console.log("Sign-in request received")
             const inputPayload = req.body;
             const parsedPayload = signInBody.safeParse(inputPayload);
 
@@ -162,7 +162,7 @@ router.post("/signin", rateLimiter ,async function(req,res) {
        }
     });
 
-    router.put("/change-pin",rateLimiter ,authMiddleware, async function(req,res) {
+    router.put("/change-pin",rateLimiter() ,authMiddleware, async function(req,res) {
         const inputPayload = req.body;
         const parsedPayload = changePinBody.safeParse(inputPayload);
 

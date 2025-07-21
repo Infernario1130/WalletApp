@@ -8,6 +8,7 @@ import axios from "axios";
 export default function SignIn() {
     const[email,setEmail] = useState("");
     const[password,setPassword] = useState("");
+    const [loginError,setLoginError] = useState("")
     const [errors,setErrors] = useState({
         email: "",
         password: ""
@@ -15,8 +16,10 @@ export default function SignIn() {
 
     const handleSubmit = async function(e) {
         e.preventDefault();
-        
+        console.log("Done")
         let isValid = true;
+        
+        setLoginError("");
 
         if (!email.trim()) {
             setErrors(function(prev) {
@@ -82,12 +85,14 @@ export default function SignIn() {
               }
               if (isValid) {
                 try {
-                    const response = await axios.post("http://localhost:3000/signin",{
+                    const response = await axios.post("http://localhost:3000/user/signin",{
                         email,
                         password
                     }, {
                         withCredentials: true
                     })
+
+                    console.log("API Response:", response)
 
                     if(response.status === 200) {
                         alert("Login successfully.")
@@ -95,10 +100,17 @@ export default function SignIn() {
                     
                 } catch(error) {
                     console.log(error)
+
+                    if (error.response) {
+                        console.log("Error response:", error.response);
+                        setLoginError(error.response.data.error || "Login failed")
+                    } else {
+                        setLoginError("Network error or server is down.")
+                    }
                 }
+                
               }
             }
-          
 
     return(
         <>
@@ -139,8 +151,12 @@ export default function SignIn() {
                    <div className="flex justify-center mt-4">
                     <button className="rounded-3xl w-full h-[45px] mx-6 my-6  bg-black text-white font-bold hover:shadow-md hover:shadow-white hover:transition delay-50 duration-200 hover:scale-110" onClick={handleSubmit}>Log In</button>
                 </div>
-
+                <div className="text-center mt-2">
+                        {loginError ? (
+                         <span className="text-red-600 font-bold">{loginError}</span>
+                        ) : null}
+                    </div>
         </div>
-            </>
+      </>
     )
 }

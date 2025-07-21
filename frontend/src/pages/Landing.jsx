@@ -38,10 +38,10 @@ export default function Landing() {
                 <div className="flex justify-center">
                     <AboutUsCard text1="Global Support" text2="Supported across globe." Icon={Globe}/>
                 </div>
-                 <div class="relative flex justify-center items-center h-80 mt-20 bg-gray-100">
+                 <div className="relative flex justify-center items-center h-80 mt-20 bg-gray-100">
 
-                    <div class="absolute w-[340px] h-[180px] bg-purple-500 rounded-[40px] blur-2xl z-0"></div>                    
-                    <img src={Smart} alt="Phone" class="relative z-10 w-[300px] transition delay-50 duration-200 hover:scale-110 " />
+                    <div className="absolute w-[340px] h-[180px] bg-purple-500 rounded-[40px] blur-2xl z-0"></div>                    
+                    <img src={Smart} alt="Phone" className="relative z-10 w-[300px] transition delay-50 duration-200 hover:scale-110 " />
                     </div>
                  </div>
 
