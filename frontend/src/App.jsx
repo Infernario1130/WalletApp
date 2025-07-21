@@ -27,7 +27,7 @@ function App() {
       <Route path="/transfer" element={<Transfer/>}/>
       <Route path="/transactions" element={<Transactions/>}/>
       <Route path="/top-up" element={<TopUp/>}/>
-      <Route path="/contact" elemeny={<ContactUs/>}/>
+      <Route path="/contact" element={<ContactUs/>}/>
       <Route path="*" element={<NotFound/>}/>
     </Routes>
     </Suspense>

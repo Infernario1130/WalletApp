@@ -1,12 +1,13 @@
 import express from "express";
-import userRouter from "./routes/user"
-import transactionRouter from "./routes/transfer"
-import "./db";
+import {userRouter} from "./routes/user.js"
+import {transactionRouter} from "./routes/transfer.js"
+import "./db.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: "../.env" });
+;
 
 const app = express()
 

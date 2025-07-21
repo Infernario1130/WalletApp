@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import authMiddleware from "../authMiddleware";
-import {User,Account,Transaction} from "../db";
-import { transferBody,topupBody } from "../rules";
+import authMiddleware from "../middlewares/authMiddleware.js";
+import {User,Account,Transaction} from "../db.js";
+import { transferBody,topupBody } from "../rules.js";
 import express from "express";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid"
@@ -242,7 +242,5 @@ router.post("/top-up", authMiddleware, async function(req,res) {
     }
 });
 
-module.exports = {
-    transactionRouter : router
-}
+export const transactionRouter = router
     

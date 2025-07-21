@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export function AppBar() {
 
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   const [open,setOpen] = useState(false);
 
@@ -23,7 +23,7 @@ export function AppBar() {
         <nav className="hidden md:flex flex-row items-center space-x-4">
           <Button onClick={function(){navigate("/signup")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign Up</Button>
           <Button onClick={function(){navigate("/signin")}} size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign In</Button>
-          <Button onClick={function(){navigate("?contact")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Contact Us</Button>
+          <Button onClick={function(){navigate("/contact")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Contact Us</Button>
         </nav>
 
         <button onClick={function() {}}></button>

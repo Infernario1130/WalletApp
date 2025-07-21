@@ -1,10 +1,10 @@
-import authMiddleware from "../middlewares/authMiddleware";
-import {User,Account} from "../db";
+import authMiddleware from "../middlewares/authMiddleware.js";
+import {User,Account} from "../db.js";
 import bcrypt from "bcrypt";
 import express from "express";
-import {signUpBody,signInBody,changePinBody} from "../rules";
+import {signUpBody,signInBody,changePinBody} from "../rules.js";
 import jwt from "jsonwebtoken";
-import rateLimiter from "../middlewares/rateLimiter"
+import rateLimiter from "../middlewares/rateLimiter.js"
 
 if (!process.env.JWT_SECRET) {
     throw new Error("No JWT_SECRET found in .env")
@@ -275,6 +275,4 @@ router.post("/signin", rateLimiter ,async function(req,res) {
         })
     })
 
-    module.exports = {
-        userRouter: router
-    }
+   export const userRouter = router

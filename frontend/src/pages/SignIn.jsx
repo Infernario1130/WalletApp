@@ -1,7 +1,146 @@
+import {Heading} from "../components/ui/Heading";
+import {SubHeading} from "../components/ui/SubHeading";
+import { useState } from "react";
+import Wallet from "../assets/Wallet.png";
+import axios from "axios";
+
+
 export default function SignIn() {
+    const[email,setEmail] = useState("");
+    const[password,setPassword] = useState("");
+    const [errors,setErrors] = useState({
+        email: "",
+        password: ""
+    })
+
+    const handleSubmit = async function(e) {
+        e.preventDefault();
+        
+        let isValid = true;
+
+        if (!email.trim()) {
+            setErrors(function(prev) {
+                return{...prev, email: "Email is required."}
+            })
+            isValid = false
+        }
+        else if (!/^[a-zA-Z0-9_.%+-]{2,256}@[a-zA-Z0-9.-]{2,10}\.[a-zA-Z]{2,10}$/.test(email)) {
+            setErrors(function(prev){
+                return{...prev,email: "Invalid email format"}
+            })
+            isValid = false
+        }
+        else {
+            setErrors({ email: "" })
+          } 
+
+          if (!password.trim()) {
+            setErrors(function(prev){
+                return{...prev, password: "Password is required."}
+            })
+            isValid = false
+        }
+            else if (password.length < 8) {
+                setErrors(function(prev) {
+                    return{...prev, password: "Password must be atleast 8 chaaracters"}
+                })
+                isValid = false
+              }
+            
+            else if (!/[a-z]/.test(password)) {
+                setErrors(function(prev) {
+                    return {...prev, password: "Password must have atleast 1 lowercase character."}
+                })
+                isValid = false
+            }
+
+            else if (!/[A-Z]/.test(password)) {
+                setErrors(function(prev){
+                    return {...prev , password: "Password must have 1 uppercase letter."}
+                })
+                isValid = false
+            }
+
+            else if (!/[0-9]/.test(password)) {
+                setErrors(function(prev){
+                    return {...prev, password: "Password must have atleast 1 digit."}
+                })
+                isValid = false
+                } 
+
+            else if (!/[^a-zA-Z0-9]/.test(password)) {
+                setErrors(function(prev){
+                    return {...prev, password: "Password must have atleast 1 special character."}
+                })
+                isValid = false
+              }
+              
+              else {
+                setErrors(function(prev) {
+                    return {...prev, password: ""}
+                })
+              }
+              if (isValid) {
+                try {
+                    const response = await axios.post("http://localhost:3000/signin",{
+                        email,
+                        password
+                    }, {
+                        withCredentials: true
+                    })
+
+                    if(response.status === 200) {
+                        alert("Login successfully.")
+                    }
+                    
+                } catch(error) {
+                    console.log(error)
+                }
+              }
+            }
+          
+
     return(
         <>
-        <h1> This is Sign-in page.</h1>
-        </>
+        <div className="min-h-screen pt-4 bg-gradient-to-br from-rose-300 to-pink-500 ">
+            <div className="">
+                <div className="flex justify-center mx-2">
+                        <img src={Wallet} alt="Logo" className="w-1/3 transition delay-50 duration-200 hover:scale-110"></img>
+                </div>
+
+                <div className="flex justify-center -mt-8">
+                        <Heading text="Log in to your account"/>
+                </div>
+                
+                <div className="-mt-[90px]">
+                        <SubHeading text="Welcome back to Wally!!!"/>
+                </div>
+            </div>
+                <div className="flex flex-col mt-20 px-4 ">
+                    <label htmlFor="e_mail" className="text-sm font-semibold">Email Address</label>
+                    <input id="e_mail" type="text" onChange={function(e){
+                        setEmail(e.target.value)
+                    }} placeholder="raman92@gmail.com" className="rounded-lg bg-white w-full h-[35px] pl-2"/>
+                </div>
+
+                {errors.email ? <div> 
+                    {errors.email}
+                </div> : null}
+
+                <div className="flex flex-col mt6 px-4 py-2">
+                    <label htmlFor="pass_word" className="text-sm font-semibold"> Password </label>
+                    <input id="pass_word" type="password" onChange={function(e) {setPassword(e.target.value)}} placeholder="******" className="rounded-lg bg-white w-full h-[35px] pl-2"/>
+                </div>
+
+                {errors.password ? <div> 
+                     {errors.password}
+                     </div> : null}
+
+                   <div className="flex justify-center mt-4">
+                    <button className="rounded-3xl w-full h-[45px] mx-6 my-6  bg-black text-white font-bold hover:shadow-md hover:shadow-white hover:transition delay-50 duration-200 hover:scale-110" onClick={handleSubmit}>Log In</button>
+                </div>
+
+        </div>
+            </>
     )
 }
