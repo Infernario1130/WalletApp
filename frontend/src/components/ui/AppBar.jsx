@@ -21,9 +21,9 @@ export function AppBar() {
         </div>
         
         <nav className="hidden md:flex flex-row items-center space-x-4">
-          <Button onClick={function(){navigate("/signup")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign Up</Button>
+          <Button onClick={function(){navigate("/signup")}} size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign Up</Button>
           <Button onClick={function(){navigate("/signin")}} size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Sign In</Button>
-          <Button onClick={function(){navigate("/contact")}}size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Contact Us</Button>
+          <Button onClick={function(){navigate("/contact")}} size="sm" className="transition delay-50 duration-300 ease-in-out hover:scale-110">Contact Us</Button>
         </nav>
 
         <button onClick={function() {}}></button>
@@ -36,12 +36,12 @@ export function AppBar() {
       </div>
      {open ? 
       <div className="flex flex-col items-center gap-3 mt-4 md:hidden">
-        <Button size="sm" className="w-11/12 max-w-xs
+        <Button onClick={function(){navigate("/signup")}} size="sm" className="w-11/12 max-w-xs
         transition delay-50 duration-300 ease-in-out  
         hover:scale-110">Sign-up</Button>
-        <Button size="sm" className="w-11/12 max-w-xs 
+        <Button onClick={function(){navigate("/signin")}} size="sm" className="w-11/12 max-w-xs 
         transition delay-50 duration-300 ease-in-out hover:scale-110">Sign-in</Button>
-      < Button size="sm" className="w-11/12 max-w-xs
+      < Button onClick={function(){navigate("/contact")}} size="sm" className="w-11/12 max-w-xs
        transition delay-50 duration-300 ease-in-out hover:scale-110">Contact us
       </Button>
     </div> : null}

@@ -20,6 +20,7 @@ export default function SignIn() {
         let isValid = true;
         
         setLoginError("");
+        
 
         if (!email.trim()) {
             setErrors(function(prev) {
@@ -135,7 +136,7 @@ export default function SignIn() {
                     }} placeholder="raman92@gmail.com" className="rounded-lg bg-white w-full h-[35px] pl-2 md:w-3/4 md:h-[60px] md:text-xl hover:shadow-md hover:shadow-white hover:transition delay-50 duration-300"/>
                 </div>
 
-                {errors.email ? <div className="mx-4 font-normal text-sm text-gray-800 md:pl-[160px] md:text-xl md:font-semibold"> 
+                {errors.email ? <div className="mx-4 font-normal text-sm text-gray-800 md:pl-[160px] md:text-xl md:font-semibold lg:ml-[65px]"> 
                     {errors.email}
                 </div> : null}
 
@@ -144,7 +145,7 @@ export default function SignIn() {
                     <input id="pass_word" type="password" onChange={function(e) {setPassword(e.target.value)}} placeholder="******" className="rounded-lg bg-white w-full h-[35px] pl-2 md:w-3/4 md:h-[60px] md:text-xl hover:shadow-md hover:shadow-white hover: transition delay-50 duration-200"/>
                 </div>
 
-                {errors.password ? <div className="mx-4 mt-[2px] font-normal text-sm text-gray-800 md:pl-[160px] md:text-xl md:font-semibold"> 
+                {errors.password ? <div className="mx-4 mt-[2px] font-normal text-sm text-gray-800 md:pl-[160px] md:text-xl md:font-semibold lg:ml-[65px]"> 
                      {errors.password}
                      </div> : null}
 
