@@ -186,7 +186,7 @@ export default function SignUp() {
                         <div className="col-span-1">
                                 <div className="flex flex-col">
                                             <label htmlFor="password" className="font-normal">Password</label>
-                                            <input id="password" className="rounded-lg py-1 px-1 transition delay-50 duration-200 hover:shadow-md hover:shadow-white w-[180px]  md:w-[340px]" placeholder="********" type="text" onChange={function(e){setPassword(e.target.value)}}></input>
+                                            <input id="password" className="rounded-lg py-1 px-1 transition delay-50 duration-200 hover:shadow-md hover:shadow-white w-[180px]  md:w-[340px]" placeholder="********" type="password" onChange={function(e){setPassword(e.target.value)}}></input>
                                         </div> 
                                         {errors.password ? <div className="mx-4 font-normal text-sm text-gray-800 md:ml-1 md:text-lg md:font-semibold "> 
                                              {errors.password}

@@ -21,7 +21,7 @@ router.post("/signup",rateLimiter() ,async function(req,res,) {
        const parsedPayload = signUpBody.safeParse(inputPayload);
        if(!parsedPayload.success) {
          return res.status(403).json({
-            error: "Incorrect inputs."
+            error: parsedPayload.error.errors[0].message
         })
        }
 
@@ -54,6 +54,7 @@ router.post("/signup",rateLimiter() ,async function(req,res,) {
         })
 
     } catch (error) {
+        console.error("Signup error:", error)
         res.status(500).json({
             error: "Internal server error."
         })

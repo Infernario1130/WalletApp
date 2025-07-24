@@ -50,8 +50,7 @@ const userSchema = new mongoose.Schema({
     
     pinHash: {
         type: String,
-        minLength: [4, "PIN should have minimum 4 characters."],
-        maxLength: [6, "PIN should have maximum 6 characters."]
+        
     }
 }, { 
     timestamps: true 

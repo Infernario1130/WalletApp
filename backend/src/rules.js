@@ -3,7 +3,7 @@ import {z} from "zod";
 const signUpBody = z.object({
     name: z.string().min(3,"Name must be atleast 3 characters.").max(26,"Name at max can have 26 characters."),
    
-    email: z.string().email("Invalid email format.").min(11,"Email must be atleast 11 characters."),
+    email: z.string().email("Invalid email format."),
 
     password: z.string().min(8,"Password must be 8 characters long.").regex(/[a-z]/,"Password must have a lowercase character.").regex(/[A-Z]/,"Password must have an uppercase character.").regex(/[0-9]/,"Password must have a number").regex(/[^A-Za-z0-9]/, "Password must have a special character."),
 
