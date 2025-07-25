@@ -164,6 +164,7 @@ router.post("/signin", rateLimiter() ,async function(req,res) {
     });
 
     router.put("/change-pin",rateLimiter() ,authMiddleware, async function(req,res) {
+        console.log("Pin")
         const inputPayload = req.body;
         const parsedPayload = changePinBody.safeParse(inputPayload);
 
